@@ -1,0 +1,403 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap");
+
+:root {
+  /* Palet Warna Futuristik (Dark Mode) */
+  --color-primary: #00f7ff; /* Cyan Neon */
+  --color-primary-hover: #9effff;
+  --color-secondary: #ff00c1; /* Magenta Neon */
+  --color-accent: #faff00; /* Yellow Neon */
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-background: #0a0a1a; /* Deep Space Blue */
+  --color-surface: rgba(10, 25, 47, 0.8); /* Translucent Panel */
+  --color-border: rgba(0, 247, 255, 0.3); /* Neon Border */
+
+  /* Tipografi */
+  --font-family-sans: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
+  --font-family-serif: "Orbitron", "Georgia", "Times New Roman", serif;
+  --font-size-base: 1rem; /* Basis 16px */
+  --line-height-base: 1.6;
+
+  /* Properti Lainnya */
+  --border-radius: 0.5rem; /* 8px */
+  --box-shadow: 0 0 20px rgba(0, 247, 255, 0.15);
+  --spacing-unit: 1rem; /* 16px */
+  --transition-speed: 0.3s ease-in-out;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Global Resets                               */
+/* -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%; /* 1rem = 16px */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(0, 247, 255, 0.08) 0%,
+      rgba(0, 247, 255, 0) 25%
+    ),
+    radial-gradient(circle at 75% 75%, rgba(255, 0, 193, 0.08) 0%, rgba(255, 0, 193, 0) 25%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Mencegah scroll horizontal dari efek partikel */
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Header                                    */
+/* -------------------------------------------------------------------------- */
+.site-header {
+  padding: 1rem 5%;
+  background: rgba(10, 25, 47, 0.5);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.logo {
+  height: 40px;
+  width: auto;
+}
+.site-title {
+  font-family: var(--font-family-serif);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  text-shadow: 0 0 5px var(--color-primary);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Elemen Tipografi                               */
+/* -------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-serif);
+  line-height: 1.2;
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-shadow: 0 0 8px rgba(0, 247, 255, 0.5);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: var(--spacing-unit);
+  color: var(--color-text-muted);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-primary-hover);
+  text-decoration: none;
+  text-shadow: 0 0 5px var(--color-primary-hover);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Komponen                                  */
+/* -------------------------------------------------------------------------- */
+
+.container {
+  width: 90%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: calc(var(--spacing-unit) * 2) 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow), inset 0 0 10px rgba(0, 247, 255, 0.1);
+  padding: calc(var(--spacing-unit) * 1.5);
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  font-size: var(--font-size-base);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed),
+    color var(--transition-speed), box-shadow var(--transition-speed);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 0 20px var(--color-primary);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Layout                                    */
+/* -------------------------------------------------------------------------- */
+
+/* Contoh layout grid untuk kartu */
+.grid-container {
+  display: grid;
+  gap: calc(var(--spacing-unit) * 1.5);
+}
+
+/* Mobile: 1 kolom */
+.grid-container {
+  grid-template-columns: 1fr;
+}
+
+/* Tablet: 2 kolom */
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 kolom */
+@media (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Formulir                                     */
+/* -------------------------------------------------------------------------- */
+
+.form-container {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: calc(var(--spacing-unit) * 2.5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--transition-speed);
+}
+.form-container:hover {
+  box-shadow: 0 0 35px rgba(0, 247, 255, 0.3);
+}
+
+.form-container h3 {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-unit);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition-speed),
+    box-shadow var(--transition-speed);
+  caret-color: var(--color-primary);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+/* Pesan error/sukses */
+.message {
+  text-align: center;
+  padding: var(--spacing-unit);
+  margin-bottom: var(--spacing-unit);
+  border-radius: var(--border-radius);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.message-error {
+  background-color: rgba(255, 0, 193, 0.1);
+  color: #ff80d9;
+  border: 1px solid rgba(255, 0, 193, 0.5);
+}
+
+.message-success {
+  background-color: rgba(0, 247, 255, 0.1);
+  color: #9effff;
+  border: 1px solid rgba(0, 247, 255, 0.5);
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap; /* agar tombol turun ke bawah jika sempit */
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-speed);
+}
+
+.page-btn:hover {
+  background-color: rgba(0, 247, 255, 0.2);
+  color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+.page-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
+  pointer-events: none;
+  transform: scale(1.05);
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 480px) {
+  .page-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  .pagination {
+    gap: 0.4rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Animasi                                   */
+/* -------------------------------------------------------------------------- */
+/* Kondisi awal elemen sebelum animasi */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+/* Kondisi akhir elemen setelah animasi (dipicu oleh JS) */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Tabel                                     */
+/* -------------------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+th {
+  background: rgba(0, 247, 255, 0.1);
+  color: var(--color-primary);
+  text-align: left;
+  padding: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--color-border);
+}
+td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+tr:last-child td {
+  border-bottom: none;
+}
+tr:hover {
+  background-color: rgba(0, 247, 255, 0.05);
+}
